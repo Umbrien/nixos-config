@@ -51,9 +51,8 @@ in {
     keepassxc
 
     obs-studio
-    obs-studio-plugins.droidcam-obs
-    droidcam
 
+    alacritty
     flameshot
     mpv
     
