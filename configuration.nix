@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+let user = "ted"; in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -63,6 +64,30 @@
     # xkbOptions = "ctrl:swapcaps,grp:alt_shift_toggle";
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    dataDir = "/home/${user}/Documents";
+    configDir = "/home/${user}/.config/syncthing";
+    user = user;
+
+    overrideDevices = true;
+    settings.devices = {
+      "Redmi Note 9 Pro @pixel-experience" = {
+        id = "4KCIINW-64SW374-S735IPS-MJOHYCK-3ZAYJ3R-T4QGTZG-OIYHI6J-2PVNGAG";
+        autoAcceptFolders = true;
+      };
+    };
+
+    # overrideFolders = true;
+    # settings.folders = {
+    #   "keepass" = {
+    #     id = "7we7e-vqjmr";
+    #     devices = ["Redmi Note 9 Pro @pixel-experience"];
+    #   };
+    # };
+  };
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -84,7 +109,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ted = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "Theodore Kaczynski";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
