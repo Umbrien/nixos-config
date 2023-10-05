@@ -54,7 +54,9 @@ in {
 
     alacritty
     flameshot
+    feh
     mpv
+    zathura
     
     pavucontrol
     qpwgraph

@@ -59,9 +59,7 @@ let user = "ted"; in
   # Configure keymap in X11
   services.xserver = {
     layout = "us,ru";
-    xkbVariant = ",ruu";
-    xkbOptions = "grp:alt_shift_toggle";
-    # xkbOptions = "ctrl:swapcaps,grp:alt_shift_toggle";
+    xkbOptions = "grp:win_space_toggle"; # "ctrl:swapcaps,grp:win_space_toggle";
   };
 
   services.syncthing = {
@@ -129,11 +127,6 @@ let user = "ted"; in
     git
     cloudflare-warp
   ];
-
-  programs.bash.shellAliases = {
-    q = "exit";
-    v = "vim";
-  };
 
   # programs.firefox = {
   #   enable = true;
