@@ -71,21 +71,24 @@ let user = "ted"; in
     configDir = "/home/${user}/.config/syncthing";
     user = user;
 
+    # web GUI port is 8384 by default
+
     overrideDevices = true;
-    settings.devices = {
+    devices = {
       "Redmi Note 9 Pro @pixel-experience" = {
         id = "4KCIINW-64SW374-S735IPS-MJOHYCK-3ZAYJ3R-T4QGTZG-OIYHI6J-2PVNGAG";
         autoAcceptFolders = true;
       };
     };
 
-    # overrideFolders = true;
-    # settings.folders = {
-    #   "keepass" = {
-    #     id = "7we7e-vqjmr";
-    #     devices = ["Redmi Note 9 Pro @pixel-experience"];
-    #   };
-    # };
+    overrideFolders = true;
+    folders = {
+      "keepass" = {
+        id = "7we7e-vqjmr";
+        path = "/home/${user}/Documents/keepass";
+        devices = ["Redmi Note 9 Pro @pixel-experience"];
+      };
+    };
   };
 
   # Enable sound with pipewire.
