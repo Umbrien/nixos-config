@@ -59,7 +59,8 @@ let user = "ted"; in
   # Configure keymap in X11
   services.xserver = {
     layout = "us,ru";
-    xkbOptions = "grp:win_space_toggle"; # "ctrl:swapcaps,grp:win_space_toggle";
+    xkbOptions = "grp:win_space_toggle";
+    # xkbOptions = "ctrl:swapcaps,grp:win_space_toggle";
   };
 
   services.syncthing = {
@@ -125,8 +126,28 @@ let user = "ted"; in
     wget
     killall xorg.xkill
     git
+    man
     cloudflare-warp
   ];
+
+  systemd.services.warp-svc = {
+    enable = true;
+    description = "Cloudflare Warp service";
+    unitConfig = {
+      Type = "simple";
+    };
+    serviceConfig = {
+      ExecStart = "/run/current-system/sw/bin/warp-svc";
+    };
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  environment.shellAliases = {
+    q = "exit";
+    v = "vim";
+    rb = "sudo nixos-rebuild switch --flake /home/${user}/.config/nix-config/";
+  };
 
   # programs.firefox = {
   #   enable = true;

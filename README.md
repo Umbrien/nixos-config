@@ -14,4 +14,6 @@ sudo nix-collect-garbage --delete-older-than 30d
 nix store optimise
 
 sudo nix-collect-garbage -d
+
+sudo nix-collect-garbage --delete-old
 ```

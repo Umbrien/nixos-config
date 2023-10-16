@@ -44,12 +44,11 @@ in {
     telegram-desktop
     discord
 
-    vscode
     nodejs_18
     wasp
 
     keepassxc
-
+    qbittorrent
     obs-studio
 
     alacritty

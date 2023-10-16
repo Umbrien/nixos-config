@@ -16,11 +16,12 @@
     userEmail = "kaluhin.dev@gmail.com";
   };
 
-  programs.bash = {
-    shellAliases = {
-      q = "exit";
-      v = "vim";
-      rb = "sudo nixos-rebuild switch --flake ~/.config/nix-config/";
-    };
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      bbenoist.nix
+      justusadam.language-haskell
+    ];
   };
 }
