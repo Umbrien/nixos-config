@@ -49,15 +49,29 @@ let user = "ted"; in
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
 
-  # Enable the Pantheon Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+  };
 
-  # Configure keymap in X11
+  boot.kernelParams = ["reboot=acpi"];
+
   services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+
+    dpi = 96;
+
+    # Enable the Pantheon Desktop Environment.
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+
     layout = "us,ru";
     xkbOptions = "grp:win_space_toggle";
     # xkbOptions = "ctrl:swapcaps,grp:win_space_toggle";

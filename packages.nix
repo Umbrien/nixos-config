@@ -43,6 +43,7 @@ in {
     firefox
     telegram-desktop
     discord
+    unstable.anytype
 
     nodejs_18
     wasp
